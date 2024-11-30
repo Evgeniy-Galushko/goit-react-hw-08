@@ -1,0 +1,14 @@
+.contactListUl {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  padding: 15px;
+}
+
+.contactListLi {
+  border: 1.5px solid black;
+  border-radius: 15px;
+}

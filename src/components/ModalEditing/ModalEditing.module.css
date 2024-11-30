@@ -1,0 +1,37 @@
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
+}
+
+.modalDiv {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.modalButton {
+  box-sizing: border-box;
+  width: 70px;
+  height: 40px;
+  background-color: rgb(224, 225, 226);
+  align-self: center;
+  border: none;
+  /* top: 0; */
+  color: rgb(126, 170, 242);
+
+  &:hover {
+    background-color: #1ed5a9;
+    color: rgb(239, 239, 240);
+    border: none;
+  }
+}
+
+.modalInput {
+  margin-top: 5px;
+  width: 300px;
+  height: 35px;
+  border-radius: 4px;
+  padding: 0 5px;
+}

@@ -1,0 +1,63 @@
+.divContact {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  padding: 15px;
+  box-sizing: border-box;
+  align-items: center;
+  width: 330px;
+}
+
+.ulContact {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 240px;
+}
+
+.contactParagraph {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: left;
+}
+
+.buttonDiv {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.divContact .contactButtonDel {
+  box-sizing: border-box;
+  width: 40px;
+  height: 30px;
+  background-color: rgb(224, 225, 226);
+  align-self: center;
+  border: none;
+  /* top: 0; */
+  color: #f60f0f;
+
+  &:hover {
+    background-color: #1ed5a9;
+    color: #efeff0;
+    border: none;
+  }
+}
+
+.divContact .contactButtonEdit {
+  box-sizing: border-box;
+  width: 40px;
+  height: 30px;
+  background-color: rgb(224, 225, 226);
+  align-self: center;
+  border: none;
+  /* top: 0; */
+  color: rgb(126, 170, 242);
+
+  &:hover {
+    background-color: #1ed5a9;
+    color: rgb(239, 239, 240);
+    border: none;
+  }
+}
