@@ -2,7 +2,7 @@ import s from "./ModalEditing.module.css";
 import Modal from "react-modal";
 Modal.setAppElement("#root");
 
-export default function VideoModal({ isOpen, onClose }) {
+export default function VideoModal({ isOpen, editСontact, handelSubmit }) {
   const customStyles = {
     overlay: {
       backgroundColor: "rgba(239, 239, 240, 0.7)",
@@ -17,6 +17,7 @@ export default function VideoModal({ isOpen, onClose }) {
       transform: "translate(-50%, -50%)",
     },
   };
+
   return (
     <Modal
       isOpen={isOpen}
@@ -25,13 +26,23 @@ export default function VideoModal({ isOpen, onClose }) {
       contentLabel="Example Modal"
     >
       <div className={s.modal}>
-        <div className={s.modalDiv}>
-          <input name="name" type="text" className={s.modalInput} />
-          <input name="number" type="tel" className={s.modalInput} />
-        </div>
-        <button onClick={onClose} className={s.modalButton}>
-          SAVE
-        </button>
+        <form className={s.modalDiv} onSubmit={handelSubmit}>
+          <input
+            name="name"
+            type="text"
+            className={s.modalInput}
+            defaultValue={editСontact.name}
+          />
+          <input
+            name="number"
+            type="tel"
+            className={s.modalInput}
+            defaultValue={editСontact.number}
+          />
+          <button className={s.modalButton} type="submit">
+            SAVE
+          </button>
+        </form>
       </div>
     </Modal>
   );

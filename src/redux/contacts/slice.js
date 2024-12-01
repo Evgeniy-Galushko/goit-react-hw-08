@@ -1,5 +1,10 @@
 import { createSelector, createSlice } from "@reduxjs/toolkit";
-import { addContact, deleteContact, fetchContacts } from "./operations";
+import {
+  addContact,
+  deleteContact,
+  fetchContacts,
+  editContact,
+} from "./operations";
 import { selectNameFilter } from "../filters/selectors";
 import { selectContacts } from "./selectors";
 
@@ -36,6 +41,16 @@ const contactsSlise = createSlice({
         state.items.push(action.payload);
       })
       .addCase(addContact.rejected, handleRejected)
+      .addCase(editContact.pending, handlePending)
+      .addCase(editContact.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        // state.items =
+        state.items = state.items
+          .filter((item) => item.id !== action.payload.id)
+          .push(action.payload);
+      })
+      .addCase(editContact.rejected, handleRejected)
       .addCase(deleteContact.pending, handlePending)
       .addCase(deleteContact.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -51,6 +66,7 @@ const contactsSlise = createSlice({
 export const selectFilteredContacts = createSelector(
   [selectContacts, selectNameFilter],
   (contacts, statusFilter) => {
+    console.log(contacts);
     console.log("Calculating visible contacts.");
     if (!Number(statusFilter)) {
       return contacts.filter((contact) =>
