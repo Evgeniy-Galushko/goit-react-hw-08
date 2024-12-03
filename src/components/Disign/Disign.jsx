@@ -74,7 +74,7 @@ const Design = () => {
           density: {
             enable: true,
           },
-          value: 430,
+          value: 300,
         },
         opacity: {
           value: 0.5,

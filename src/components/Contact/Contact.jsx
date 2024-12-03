@@ -3,14 +3,14 @@ import { RiDeleteBinLine, RiEdit2Line } from "react-icons/ri";
 import s from "./Contact.module.css";
 
 import { deleteContact } from "../../redux/contacts/operations";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ModalEditing from "../ModalEditing/ModalEditing";
 import { editContact } from "../../redux/contacts/operations";
+import { Link } from "react-router-dom";
 
 export default function Contact({ id, name, number }) {
   const [modalEditing, setModalEditing] = useState(false);
   const [editableContact, seteditableContact] = useState({});
-  const [updatedContact, setUpdatedContact] = useState({});
 
   const dispatch = useDispatch();
   const hendleDelete = (id) => dispatch(deleteContact(id));
@@ -20,7 +20,7 @@ export default function Contact({ id, name, number }) {
     openEditForm({ id: id, name: name, number: number });
   };
 
-  function closeModalEditing() {}
+  // function closeModalEditing() {}
 
   const handelSubmitEditContact = (e) => {
     e.preventDefault();
@@ -28,24 +28,22 @@ export default function Contact({ id, name, number }) {
     const editName = form.name.value;
     const editNumber = form.number.value;
     const newContact = { id: id, name: editName, number: editNumber };
-    setUpdatedContact(newContact);
 
+    dispatch(editContact(newContact));
     setModalEditing(false);
   };
-
-  useEffect(() => {
-    dispatch(editContact(updatedContact));
-  }, [dispatch, updatedContact]);
 
   const openEditForm = (contactItem) => {
     seteditableContact(contactItem);
   };
 
+  // const tel = number.replace(/-/g, "").replace(/ /g, "");
+
   return (
     <div className={s.divContact}>
       <ModalEditing
         isOpen={modalEditing}
-        onClose={closeModalEditing}
+        // onClose={closeModalEditing}
         editСontact={editableContact}
         handelSubmit={handelSubmitEditContact}
       />

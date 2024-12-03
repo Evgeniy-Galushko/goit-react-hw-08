@@ -3,8 +3,11 @@ import { ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useId } from "react";
 import s from "./RegistrationForm.module.css";
+import { useDispatch } from "react-redux";
+import { register } from "../../redux/auth/operations";
 
 export default function RegistrationForm() {
+  const dispatch = useDispatch();
   const idUsername = useId();
   const idName = useId();
   const idNumber = useId();
@@ -17,7 +20,7 @@ export default function RegistrationForm() {
   };
 
   const pattern = Yup.object().shape({
-    username: Yup.string()
+    name: Yup.string()
       .matches(regs.username, "Too Short!")
       // .min(3, 'Too Short!')
       // .max(50, 'Too Long!')
@@ -38,12 +41,13 @@ export default function RegistrationForm() {
   });
 
   const handleSubmit = (values, actions) => {
+    dispatch(register(values));
     console.log(values);
     actions.resetForm();
   };
 
   const initialValues = {
-    username: "",
+    name: "",
     email: "",
     password: "",
   };
@@ -55,22 +59,20 @@ export default function RegistrationForm() {
         validationSchema={pattern}
       >
         <Form className={s.form}>
+          <h1 className={s.headline}>Sign up</h1>
           <div className={s.formDiv}>
             <label className={s.label} htmlFor={idUsername}>
               Username
             </label>
             <Field
-              name="username"
+              name="name"
               type="text"
               id={idUsername}
               className={s.field}
               placeholder="enter username"
+              required
             />
-            <ErrorMessage
-              name="username"
-              component="span"
-              className={s.error}
-            />
+            <ErrorMessage name="name" component="span" className={s.error} />
           </div>
           <div className={s.formDiv}>
             <label className={s.label} htmlFor={idName}>
@@ -81,7 +83,8 @@ export default function RegistrationForm() {
               type="text"
               id={idName}
               className={s.field}
-              placeholder="enter your email"
+              placeholder="your@email.com"
+              required
             />
             <ErrorMessage name="email" component="span" className={s.error} />
           </div>
@@ -91,10 +94,11 @@ export default function RegistrationForm() {
             </label>
             <Field
               name="password"
-              type="text"
+              type="password"
               id={idNumber}
               className={s.field}
               placeholder="enter password"
+              required
             />
             <ErrorMessage
               name="password"
@@ -103,7 +107,7 @@ export default function RegistrationForm() {
             />
           </div>
           <button type="submit" className={s.formButton}>
-            Log in
+            Sign up
           </button>
         </Form>
       </Formik>

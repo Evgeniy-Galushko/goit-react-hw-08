@@ -11,4 +11,5 @@
 .contactListLi {
   border: 1.5px solid black;
   border-radius: 15px;
+  box-shadow: 0px 0px 4px 4px #adf8e6;
 }

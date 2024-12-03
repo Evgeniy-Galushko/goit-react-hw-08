@@ -1,0 +1,20 @@
+.homeContact {
+  display: flex;
+  flex-direction: row;
+  gap: 25px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+
+  a {
+    color: white;
+    font-weight: bold;
+  }
+  .active {
+    text-decoration: underline;
+    /* color: black; */
+    color: #1ed5a9;
+  }
+}

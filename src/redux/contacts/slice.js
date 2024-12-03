@@ -45,10 +45,9 @@ const contactsSlise = createSlice({
       .addCase(editContact.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        // state.items =
-        state.items = state.items
-          .filter((item) => item.id !== action.payload.id)
-          .push(action.payload);
+        state.items = state.items.map((item) =>
+          item.id === action.payload.id ? action.payload : item
+        );
       })
       .addCase(editContact.rejected, handleRejected)
       .addCase(deleteContact.pending, handlePending)
@@ -66,7 +65,6 @@ const contactsSlise = createSlice({
 export const selectFilteredContacts = createSelector(
   [selectContacts, selectNameFilter],
   (contacts, statusFilter) => {
-    console.log(contacts);
     console.log("Calculating visible contacts.");
     if (!Number(statusFilter)) {
       return contacts.filter((contact) =>

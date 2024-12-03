@@ -3,8 +3,11 @@ import { ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useId } from "react";
 import s from "./LoginForm.module.css";
+import { useDispatch } from "react-redux";
+import { logIn } from "../../redux/auth/operations";
 
 export default function LoginForm() {
+  const dispatch = useDispatch();
   const idName = useId();
   const idNumber = useId();
   const regs = {
@@ -22,16 +25,24 @@ export default function LoginForm() {
       // .max(50, 'Too Long!')
       .required("Required"),
     password: Yup.string()
-      .matches(
-        regs.password,
-        "Пароль должен содержать: хотя бы одно число; !@#$%^&* - строка содержит хотя бы один спецсимвол; строка содержит хотя бы одну латинскую букву в нижнем регистре; строка содержит хотя бы одну латинскую букву в верхнем регистре; строка состоит не менее, чем из 8 вышеупомянутых символов."
-      )
+      // .matches(
+      //   regs.password,
+      //   "Пароль должен содержать: хотя бы одно число; !@#$%^&* - строка содержит хотя бы один спецсимвол; строка содержит хотя бы одну латинскую букву в нижнем регистре; строка содержит хотя бы одну латинскую букву в верхнем регистре; строка состоит не менее, чем из 8 вышеупомянутых символов."
+      // )
       // .min(3, 'Too Short!')
       // .max(50, 'Too Long!')
       .required("Required"),
   });
 
   const handleSubmit = (values, actions) => {
+    dispatch(logIn(values));
+    // .unwrap()
+    // .then(() => {
+    //   console.log("login success");
+    // })
+    // .cath(() => {
+    //   console.log("login error");
+    // });
     console.log(values);
     actions.resetForm();
   };
@@ -48,16 +59,18 @@ export default function LoginForm() {
         validationSchema={pattern}
       >
         <Form className={s.form}>
+          <h1 className={s.headline}>Sign in</h1>
           <div className={s.formDiv}>
             <label className={s.label} htmlFor={idName}>
               Email
             </label>
             <Field
               name="email"
-              type="text"
+              type="email"
               id={idName}
               className={s.field}
-              placeholder="enter your email"
+              placeholder="your@email.com"
+              required
             />
             <ErrorMessage name="email" component="span" className={s.error} />
           </div>
@@ -67,10 +80,11 @@ export default function LoginForm() {
             </label>
             <Field
               name="password"
-              type="text"
+              type="password"
               id={idNumber}
               className={s.field}
               placeholder="enter password"
+              required
             />
             <ErrorMessage
               name="password"
@@ -79,7 +93,7 @@ export default function LoginForm() {
             />
           </div>
           <button type="submit" className={s.formButton}>
-            Log in
+            Sign in
           </button>
         </Form>
       </Formik>
