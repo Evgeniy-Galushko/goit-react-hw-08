@@ -4,7 +4,7 @@ import s from "./HomePage.module.css";
 export default function Home() {
   return (
     <div className={s.particles}>
-      <h1 className={s.title}>Welcome page of the contact book!</h1>
+      <h1 className={s.title}>Welcome to the personal contacts page!</h1>
     </div>
   );
 }

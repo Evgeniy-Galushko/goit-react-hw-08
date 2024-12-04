@@ -43,7 +43,6 @@ export default function LoginForm() {
     // .cath(() => {
     //   console.log("login error");
     // });
-    console.log(values);
     actions.resetForm();
   };
 

@@ -1,5 +1,15 @@
+.particles {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+}
 .title {
   font-family: "Roboto", sans-serif;
-  font-size: 36px;
-  font-weight: 600;
+  font-size: 62px;
+  font-weight: 900;
+  color: #9fecda;
+  text-shadow: 0px 0px 25px black;
+  text-align: center;
 }
