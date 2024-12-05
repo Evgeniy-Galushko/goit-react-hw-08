@@ -47,6 +47,7 @@ export default function ContactForm() {
       initialValues={initialValues}
       onSubmit={handleSubmit}
       validationSchema={pattern}
+      className={s.formik}
     >
       <Form className={s.form}>
         <div className={s.formDiv}>

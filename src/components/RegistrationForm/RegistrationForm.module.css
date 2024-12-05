@@ -32,10 +32,11 @@
 
 .label {
   font-family: "Roboto", sans-serif;
-  font-size: 16px;
-  font-weight: 500;
+  font-size: 20px;
+  font-weight: 600;
   text-align: left;
   color: #9fecda;
+  text-shadow: 0px 0px 10px #000000;
 }
 
 .field {
@@ -59,6 +60,7 @@
   border: none;
   border-radius: 8px;
   cursor: pointer;
+  text-shadow: 0px 0px 1px #000000;
 
   &:hover {
     background-color: #1ed5a9;

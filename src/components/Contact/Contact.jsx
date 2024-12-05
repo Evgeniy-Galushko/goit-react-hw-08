@@ -5,12 +5,15 @@ import s from "./Contact.module.css";
 import { deleteContact } from "../../redux/contacts/operations";
 import { useState } from "react";
 import ModalEditing from "../ModalEditing/ModalEditing";
+import ModalDelete from "../ModalDelete/ModalDelete";
 import { editContact } from "../../redux/contacts/operations";
-import { Link } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 
 export default function Contact({ id, name, number }) {
   const [modalEditing, setModalEditing] = useState(false);
-  const [editableContact, seteditableContact] = useState({});
+  const [modalDelete, setModalDeleteg] = useState(false);
+
+  const [editableContact, setEditableContact] = useState({});
 
   const dispatch = useDispatch();
   const hendleDelete = (id) => dispatch(deleteContact(id));
@@ -34,7 +37,15 @@ export default function Contact({ id, name, number }) {
   };
 
   const openEditForm = (contactItem) => {
-    seteditableContact(contactItem);
+    setEditableContact(contactItem);
+  };
+
+  const handleClickDeleteOpen = () => {
+    setModalDeleteg(true);
+  };
+
+  const handleClickDeleteClose = () => {
+    setModalDeleteg(false);
   };
 
   // const tel = number.replace(/-/g, "").replace(/ /g, "");
@@ -43,9 +54,21 @@ export default function Contact({ id, name, number }) {
     <div className={s.divContact}>
       <ModalEditing
         isOpen={modalEditing}
-        // onClose={closeModalEditing}
         editСontact={editableContact}
         handelSubmit={handelSubmitEditContact}
+      />
+      <ModalDelete
+        isOpen={modalDelete}
+        editСontact={editableContact}
+        isClose={handleClickDeleteClose}
+        handelClick={() => hendleDelete(id)}
+      />
+      <Toaster
+        toastOptions={{
+          className: "",
+          duration: 4000,
+          style: {},
+        }}
       />
       <ul className={s.ulContact}>
         <li>
@@ -58,14 +81,15 @@ export default function Contact({ id, name, number }) {
       <div className={s.buttonDiv}>
         <button
           className={s.contactButtonDel}
-          type="clicks"
-          onClick={() => hendleDelete(id)}
+          type="click"
+          // onClick={() => hendleDelete(id)}
+          onClick={handleClickDeleteOpen}
         >
           <RiDeleteBinLine size={24} />
         </button>
         <button
           className={s.contactButtonEdit}
-          type="clicks"
+          type="click"
           onClick={handleClick}
         >
           <RiEdit2Line size={24} />

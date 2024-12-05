@@ -5,10 +5,20 @@
   gap: 15px;
 }
 
-.modalDiv {
+.titleModal {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: #1ed5a9;
+}
+
+.divButtons {
   display: flex;
-  flex-direction: column;
-  gap: 15px;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 250px;
 }
 
 .modalButton {
@@ -26,12 +36,4 @@
     color: #fff;
     border: none;
   }
-}
-
-.modalInput {
-  margin-top: 5px;
-  width: 300px;
-  height: 35px;
-  border-radius: 4px;
-  padding: 0 5px;
 }

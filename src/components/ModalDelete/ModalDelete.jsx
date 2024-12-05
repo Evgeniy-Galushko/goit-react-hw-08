@@ -1,8 +1,8 @@
-import s from "./ModalEditing.module.css";
+import s from "./ModalDelete.module.css";
 import Modal from "react-modal";
 Modal.setAppElement("#root");
 
-export default function ModalEditingl({ isOpen, editСontact, handelSubmit }) {
+export default function ModalDelete({ isOpen, isClose, handelClick }) {
   const customStyles = {
     overlay: {
       backgroundColor: "rgba(239, 239, 240, 0.7)",
@@ -26,23 +26,17 @@ export default function ModalEditingl({ isOpen, editСontact, handelSubmit }) {
       contentLabel="Example Modal"
     >
       <div className={s.modal}>
-        <form className={s.modalDiv} onSubmit={handelSubmit}>
-          <input
-            name="name"
-            type="text"
-            className={s.modalInput}
-            defaultValue={editСontact.name}
-          />
-          <input
-            name="number"
-            type="tel"
-            className={s.modalInput}
-            defaultValue={editСontact.number}
-          />
-          <button className={s.modalButton} type="submit">
-            SAVE
+        <h1 className={s.titleModal}>
+          Are you sure you want to delete this Contact?
+        </h1>
+        <div className={s.divButtons}>
+          <button className={s.modalButton} type="click" onClick={handelClick}>
+            YES
           </button>
-        </form>
+          <button className={s.modalButton} type="click" onClick={isClose}>
+            NO
+          </button>
+        </div>
       </div>
     </Modal>
   );

@@ -17,16 +17,17 @@
 
 .contactParagraph {
   font-family: "Roboto", sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
   text-align: left;
   color: #9fecda;
+  text-shadow: 0px 0px 10px #000000;
 }
 
 .buttonDiv {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 8px;
 }
 
 .divContact .contactButtonDel {
@@ -39,6 +40,7 @@
   border-radius: 8px;
   /* top: 0; */
   color: #f60f0f;
+  box-shadow: 0px 0px 2px 2px #adf8e772;
 
   &:hover {
     background-color: #1ed5a9;
@@ -57,6 +59,7 @@
   border-radius: 8px;
   /* top: 0; */
   color: rgb(126, 170, 242);
+  box-shadow: 0px 0px 2px 2px #adf8e772;
 
   &:hover {
     background-color: #1ed5a9;

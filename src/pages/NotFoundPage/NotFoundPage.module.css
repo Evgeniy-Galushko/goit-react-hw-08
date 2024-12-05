@@ -2,30 +2,41 @@
   max-width: 700px;
   margin: 0 auto;
   padding: 25px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
 }
 
 .divH {
   font-family: "Montserrat", sans-serif;
   font-weight: 900;
-  font-size: 24px;
+  font-size: 34px;
   line-height: 1.5;
   letter-spacing: 0.04em;
-  color: #000;
+  color: #9fecda;
+  text-shadow: 0px 0px 25px black;
 }
 
 .divHSpan {
-  color: #185cc2;
+  color: #05f4bc;
 }
 
 .divNavlink {
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
-  font-size: 24px;
+  font-size: 30px;
   line-height: 1.5;
   letter-spacing: 0.04em;
-  color: #185cc2;
+  color: #9fecda;
   display: flex;
   flex-direction: row;
   justify-content: center;
   padding: 25px;
+  text-shadow: 0px 0px 25px black;
+
+  &:hover {
+    color: #05f4bc;
+  }
 }

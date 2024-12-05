@@ -18,7 +18,7 @@ export default function NotFoundPage() {
         state={location}
         className={s.divNavlink}
       >
-        <GoArrowLeft size="30px" className={s.arrow} />
+        <GoArrowLeft size="46px" className={s.arrow} />
         Go back
       </NavLink>
     </div>
