@@ -55,7 +55,7 @@ export default function Contact({ id, name, number }) {
       <ModalEditing
         isOpen={modalEditing}
         editСontact={editableContact}
-        handelSubmit={handelSubmitEditContact}
+        handleSubmit={handelSubmitEditContact}
       />
       <ModalDelete
         isOpen={modalDelete}

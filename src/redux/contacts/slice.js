@@ -1,12 +1,10 @@
-import { createSelector, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import {
   addContact,
   deleteContact,
   fetchContacts,
   editContact,
 } from "./operations";
-import { selectNameFilter } from "../filters/selectors";
-import { selectContacts } from "./selectors";
 
 const handlePending = (state) => {
   state.isLoading = true;
@@ -61,21 +59,5 @@ const contactsSlise = createSlice({
       .addCase(deleteContact.rejected, handleRejected);
   },
 });
-
-export const selectFilteredContacts = createSelector(
-  [selectContacts, selectNameFilter],
-  (contacts, statusFilter) => {
-    console.log("Calculating visible contacts.");
-    if (!Number(statusFilter)) {
-      return contacts.filter((contact) =>
-        contact.name.toLowerCase().includes(statusFilter.toLowerCase())
-      );
-    } else {
-      return contacts.filter((contact) =>
-        contact.number.toLowerCase().includes(statusFilter.toLowerCase())
-      );
-    }
-  }
-);
 
 export default contactsSlise.reducer;

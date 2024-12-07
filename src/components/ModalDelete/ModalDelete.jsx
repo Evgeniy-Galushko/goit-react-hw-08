@@ -2,7 +2,7 @@ import s from "./ModalDelete.module.css";
 import Modal from "react-modal";
 Modal.setAppElement("#root");
 
-export default function ModalDelete({ isOpen, isClose, handelClick }) {
+export default function ModalDelete({ isOpen, isClose, handleClick }) {
   const customStyles = {
     overlay: {
       backgroundColor: "rgba(239, 239, 240, 0.7)",
@@ -30,7 +30,7 @@ export default function ModalDelete({ isOpen, isClose, handelClick }) {
           Are you sure you want to delete this Contact?
         </h1>
         <div className={s.divButtons}>
-          <button className={s.modalButton} type="click" onClick={handelClick}>
+          <button className={s.modalButton} type="click" onClick={handleClick}>
             YES
           </button>
           <button className={s.modalButton} type="click" onClick={isClose}>
