@@ -42,6 +42,7 @@
 .field {
   width: 400px;
   height: 35px;
+  padding: 0 10px;
   border-radius: 4px;
   font-family: "Roboto", sans-serif;
   font-size: 16px;
@@ -69,9 +70,31 @@
   }
 }
 
+.formButton:disabled {
+  background-color: rgb(138, 138, 138);
+  box-shadow: 0px 0px 4px 4px #adf8e6;
+  color: #fff;
+}
+
 .error {
   font-family: "Roboto", sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 700;
   color: red;
+}
+
+.checkbox {
+  margin: 0 auto;
+}
+
+.checkboxSpan {
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #9fecda;
+  text-shadow: 0px 0px 4px #000000;
+}
+
+.checkboxSpanCollor {
+  color: #03fac0;
 }

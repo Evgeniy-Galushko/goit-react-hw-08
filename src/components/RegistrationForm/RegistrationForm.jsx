@@ -1,16 +1,23 @@
 import { Formik, Form, Field } from "formik";
 import { ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { useId } from "react";
+import { useId, useState } from "react";
 import s from "./RegistrationForm.module.css";
 import { useDispatch } from "react-redux";
 import { register } from "../../redux/auth/operations";
+import { NavLink } from "react-router-dom";
+import ModalAgreement from "../ModalAgreement/ModalAgreement";
 
 export default function RegistrationForm() {
   const dispatch = useDispatch();
   const idUsername = useId();
   const idName = useId();
   const idNumber = useId();
+  const idCheckbox = useId();
+
+  const [disablet, setDisablet] = useState(false);
+  const [modalAgreement, setModalAgreement] = useState(false);
+
   const regs = {
     username: /^[а-яА-Яa-zA-Z0-9 ]{3,50}$/,
     email:
@@ -50,8 +57,27 @@ export default function RegistrationForm() {
     email: "",
     password: "",
   };
+
+  const handleChange = (e) => {
+    setDisablet(e.target.checked);
+  };
+
+  const handleClick = () => {
+    setModalAgreement(true);
+  };
+
+  const handleClickClose = () => {
+    setModalAgreement(false);
+  };
+
   return (
     <div className={s.formik}>
+      <ModalAgreement
+        isOpen={modalAgreement}
+        isClose={handleClickClose}
+        // editСontact={editableContact}
+        // handleSubmit={handelSubmitEditContact}
+      />
       <Formik
         initialValues={initialValues}
         onSubmit={handleSubmit}
@@ -105,7 +131,22 @@ export default function RegistrationForm() {
               className={s.error}
             />
           </div>
-          <button type="submit" className={s.formButton}>
+          <label htmlFor={idCheckbox} className={s.checkbox}>
+            <Field
+              type="checkbox"
+              id={idCheckbox}
+              name="agree"
+              checked={disablet}
+              onChange={handleChange}
+            />
+            <span className={s.checkboxSpan}>
+              I agree to the{" "}
+              <NavLink onClick={handleClick} className={s.checkboxSpanCollor}>
+                Terms and Conditions!
+              </NavLink>
+            </span>
+          </label>
+          <button type="submit" className={s.formButton} disabled={!disablet}>
             Sign up
           </button>
         </Form>
