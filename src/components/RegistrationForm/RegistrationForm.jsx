@@ -68,6 +68,7 @@ export default function RegistrationForm() {
 
   const handleClickClose = () => {
     setModalAgreement(false);
+    setDisablet(true);
   };
 
   return (
